@@ -15,6 +15,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public Text CoinText;
         public int CoinCount;
 
+
         [SerializeField] private bool m_IsWalking;
         [SerializeField] private float m_WalkSpeed;
         [SerializeField] private float m_RunSpeed;
@@ -269,14 +270,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
         }
 
-        public void CoinScore()
-        {
-            CoinCount += 10;
-        }
-
-        public void UpdateCoinText()
-        {
-            CoinText.text = "Coin: " + CoinCount;
-        }
+        
     }
 }
