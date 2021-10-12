@@ -36,7 +36,11 @@ public class GameManager : MonoBehaviour
             levelElapsedTime += Time.deltaTime;
             timeText.text = "Timer: " + levelElapsedTime.ToString("0.00");
 
-            if (levelElapsedTime == 20)
+            if(CoinCount == 60)
+            {
+                SceneManager.LoadScene("GameWin");
+            }
+            else if (levelElapsedTime >= 30)
             {
                 SceneManager.LoadScene("GameLose");
 
