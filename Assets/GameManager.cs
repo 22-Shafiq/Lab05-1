@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
 {
     public Text CoinText;
     public int CoinCount;
+    public ParticleSystem coinEffect;
+    public ParticleSystem coinEffect1;
+    public ParticleSystem coinEffect2;
 
     public float startDelayTime;
     public float levelTime;
@@ -24,6 +27,10 @@ public class GameManager : MonoBehaviour
 
         CoinCount = 0;
         CoinText.text = "Coin: " + CoinCount;
+
+        coinEffect.Stop();
+        coinEffect1.Stop();
+        coinEffect2.Stop();
     }
 
     // Update is called once per frame
@@ -53,5 +60,11 @@ public class GameManager : MonoBehaviour
     {
         CoinCount += 10;
         CoinText.text = "Coin: " + CoinCount;
+    }
+    public void coinExplosion()
+    {
+        coinEffect.Play();
+        coinEffect1.Play();
+        coinEffect2.Play();
     }
 }

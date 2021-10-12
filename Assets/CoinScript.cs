@@ -23,6 +23,7 @@ public class CoinScript : MonoBehaviour
         if(other.gameObject.tag=="Player")
         {            
             print("Plus 10");
+            gm.coinExplosion();
             Destroy(gameObject);
             gm.CoinScore();
         }
