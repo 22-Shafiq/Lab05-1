@@ -1,5 +1,7 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
@@ -10,6 +12,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
     [RequireComponent(typeof (AudioSource))]
     public class FirstPersonController : MonoBehaviour
     {
+        public Text CoinText;
+        public int CoinCount;
+
         [SerializeField] private bool m_IsWalking;
         [SerializeField] private float m_WalkSpeed;
         [SerializeField] private float m_RunSpeed;
@@ -254,6 +259,24 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 return;
             }
             body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
+        }
+
+        private void OnTriggerEnter(Collider collision)
+        {
+            if(collision.gameObject.tag=="Water")
+            {
+                SceneManager.LoadScene("GameLose");
+            }
+        }
+
+        public void CoinScore()
+        {
+            CoinCount += 10;
+        }
+
+        public void UpdateCoinText()
+        {
+            CoinText.text = "Coin: " + CoinCount;
         }
     }
 }
