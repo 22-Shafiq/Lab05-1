@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class CoinScript : MonoBehaviour
 {
     public GameManager gm;
+    public GameObject particle;
 
     // Start is called before the first frame update
     void Start()
@@ -23,12 +24,21 @@ public class CoinScript : MonoBehaviour
         if(other.gameObject.tag=="Player")
         {            
             print("Plus 10");
-            gm.coinExplosion();
-            Destroy(gameObject);
             gm.CoinScore();
+            SpawnParticle();
+            StartCoroutine(waitB4Destroy());
         }
     }
+    IEnumerator waitB4Destroy()
+    {
+        yield return new WaitForSeconds(0.3f);
+        Destroy(gameObject);
+    }    
 
+    public void SpawnParticle()
+    {
+        Instantiate(particle, transform.position, transform.rotation);
+    }
    
 
 }
